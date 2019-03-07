@@ -1,7 +1,26 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import SignedInLinks from "./SignedInLinks";
+import SignedOutLinks from "./SignedOutLinks";
+import { connect } from "react-redux";
 
-class AppNavbar extends Component {
+const Navbar = props => {
+  const { auth } = props;
+  //console.log(auth);
+  const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
+  return (
+    <nav className="navbar navbar-expand-md navbar-dark bg-primary mb-4">
+      <div className="container">
+        <Link to="/" className="navbar-brand">
+          Home
+        </Link>
+        {links}
+      </div>
+    </nav>
+  );
+};
+
+/*class AppNavbar extends Component {
   render() {
     return (
       <div>
@@ -53,6 +72,12 @@ class AppNavbar extends Component {
       </div>
     );
   }
-}
+}*/
 
-export default AppNavbar;
+const mapStateToProps = state => {
+  return {
+    auth: state.firebase.auth
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);

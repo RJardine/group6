@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import AuthNavbar from "./AuthNavbar";
+//import AuthNavbar from "./AuthNavbar";
 import { Link } from "react-router-dom";
 
 export default class ForgotPassword extends Component {
   render() {
     return (
       <div>
-        <AuthNavbar />
+        {/* <AuthNavbar /> */}
         <div className="container">
           <div className="text-center">
             <h2>Password Reset Request</h2>

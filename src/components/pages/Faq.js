@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import AppNavbar from "../layout/AppNavbar";
 
 class Faq extends Component {
   render() {
     return (
       <div>
-        <AppNavbar />
         <div className="top-container text-center">
           <h1>
             <b> Frequently Asked Questions</b>

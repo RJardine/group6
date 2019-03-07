@@ -1,12 +1,41 @@
 import React, { Component } from "react";
-import AppNavbar from "../layout/AppNavbar";
 import { Link } from "react-router-dom";
+import firebase from "../../config/fbConfig";
 
 class BookPage extends Component {
+  constructor(props) {
+    super(props);
+    this.ref = firebase.firestore().collection("Specialists");
+    this.unsubscribe = null;
+    this.state = {
+      Specialists: []
+    };
+  }
+  onCollectionUpdate = querySnapshot => {
+    const Specialists = [];
+    querySnapshot.forEach(doc => {
+      const { Name, Speciality, Location, Cost } = doc.data();
+      Specialists.push({
+        key: doc.id,
+        doc, // DocumentSnapshot
+        Name,
+        Speciality,
+        Location,
+        Cost
+      });
+    });
+    this.setState({
+      Specialists
+    });
+  };
+
+  componentDidMount() {
+    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+  }
+
   render() {
     return (
       <div>
-        <AppNavbar />
         <div className="container">
           <h3>
             Search for Specalist in your Location{" "}
@@ -51,42 +80,20 @@ class BookPage extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Doyen </td>
-                <td>Plumber </td>
-                <td>Arcadia</td>
-                <td>£100</td>
-                <td>
-                  <Link to="/" className="btn btn-primary btn-sm">
-                    <i className="fas fa-arrow-circle-right" />
-                    Details
-                  </Link>
-                </td>
-              </tr>
-              <tr>
-                <td>Shlippy </td>
-                <td>Builder </td>
-                <td>Porto</td>
-                <td>£0.20</td>
-                <td>
-                  <Link to="/" className="btn btn-primary btn-sm">
-                    <i className="fas fa-arrow-circle-right" />
-                    Details
-                  </Link>
-                </td>
-              </tr>
-              <tr>
-                <td>OneplusOneisSix </td>
-                <td>Pole Dancer </td>
-                <td>Red District</td>
-                <td>10p</td>
-                <td>
-                  <Link to="/" className="btn btn-primary btn-sm">
-                    <i className="fas fa-arrow-circle-right" />
-                    Details
-                  </Link>
-                </td>
-              </tr>
+              {this.state.Specialists.map(spec => (
+                <tr>
+                  <td>{spec.Name} </td>
+                  <td>{spec.Speciality} </td>
+                  <td>{spec.Location}</td>
+                  <td>£{parseFloat(spec.Cost).toFixed(2)}</td>
+                  <td>
+                    <Link to="/" className="btn btn-primary btn-sm">
+                      <i className="fas fa-arrow-circle-right" />
+                      Details
+                    </Link>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

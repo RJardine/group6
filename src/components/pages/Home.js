@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import AppNavbar from "../layout/AppNavbar";
 
 class Home extends Component {
   render() {
     return (
       <div>
-        <AppNavbar />
         <div className="container">
           <h1>Home Page</h1>
           <section className="top-container">

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import AuthNavbar from "./AuthNavbar";
+//import AuthNavbar from "./AuthNavbar";
 
 class Register extends Component {
   render() {
     return (
       <div>
-        <AuthNavbar />
+        {/* <AuthNavbar /> */}
         <div className="container">
           <button type="button" className="btn btn-link offset-md-6">
             <Link to="/auth/login">Click Here To Login</Link>
