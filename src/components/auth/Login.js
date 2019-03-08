@@ -64,7 +64,7 @@ class Login extends Component {
                 {authError ? <p>{authError}</p> : null}
               </div>
               <button type="button" className="btn btn-link">
-                <Link to="/auth/resetpassword">Forgot Password?</Link>
+                <Link to="/forgot_password">Forgot Password?</Link>
               </button>
             </form>
           </div>

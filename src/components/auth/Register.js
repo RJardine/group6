@@ -1,12 +1,30 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-//import AuthNavbar from "./AuthNavbar";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { register } from "../../store/actions/authActions";
 
 class Register extends Component {
+  state = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: ""
+  };
+  handleChange = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  };
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.register(this.state);
+  };
   render() {
+    const { auth, authError } = this.props;
+    if (auth.uid) return <Redirect to="/" />;
     return (
       <div>
-        {/* <AuthNavbar /> */}
         <div className="container">
           <button type="button" className="btn btn-link offset-md-6">
             <Link to="/auth/login">Click Here To Login</Link>
@@ -14,26 +32,53 @@ class Register extends Component {
           <br />
           <div className="col-md-4 offset-md-4">
             <h1 className="text-left">Register </h1>
-            <form action="">
+            <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <label htmlFor="firstName">First Name</label>
-                <input type="text" className="form-control" />
+                <input
+                  type="text"
+                  id="firstName"
+                  onChange={this.handleChange}
+                  className="form-control"
+                  required
+                />
               </div>
               <div className="form-group">
-                <label htmlFor="lastName">last Name</label>
-                <input type="text" className="form-control" />
+                <label htmlFor="lastName">Last Name</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  onChange={this.handleChange}
+                  className="form-control"
+                  required
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="email">Email</label>
-                <input type="email" className="form-control" />
+                <input
+                  type="email"
+                  id="email"
+                  onChange={this.handleChange}
+                  className="form-control"
+                  required
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="password">Password</label>
-                <input type="password" className="form-control" />
+                <input
+                  type="password"
+                  id="password"
+                  onChange={this.handleChange}
+                  className="form-control"
+                  required
+                />
               </div>
               <button className="btn btn-primary btn-lg btn-block">
                 Register
               </button>
+              <div className="center red-text">
+                {authError ? <p>{authError}</p> : null}
+              </div>
             </form>
           </div>
         </div>
@@ -42,4 +87,20 @@ class Register extends Component {
   }
 }
 
-export default Register;
+const mapStateToProps = state => {
+  return {
+    auth: state.firebase.auth,
+    authError: state.auth.authError
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    register: newUser => dispatch(register(newUser))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Register);

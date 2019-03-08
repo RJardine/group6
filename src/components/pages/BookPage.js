@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import firebase from "../../config/fbConfig";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 
 class BookPage extends Component {
   constructor(props) {
@@ -34,6 +37,9 @@ class BookPage extends Component {
   }
 
   render() {
+    const { auth } = this.props;
+    if (!auth.uid) return <Redirect to="/auth/login" />;
+
     return (
       <div>
         <div className="container">
@@ -101,4 +107,12 @@ class BookPage extends Component {
     );
   }
 }
-export default BookPage;
+
+const mapStateToProps = state => {
+  // console.log(state);
+  return {
+    auth: state.firebase.auth
+  };
+};
+
+export default compose(connect(mapStateToProps))(BookPage);

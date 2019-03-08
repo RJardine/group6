@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
 class Faq extends Component {
   render() {
+    const { auth } = this.props;
+    if (!auth.uid) return <Redirect to="/auth/login" />;
     return (
       <div>
         <div className="top-container text-center">
@@ -60,4 +64,12 @@ class Faq extends Component {
     );
   }
 }
-export default Faq;
+
+const mapStateToProps = state => {
+  // console.log(state);
+  return {
+    auth: state.firebase.auth
+  };
+};
+
+export default connect(mapStateToProps)(Faq);

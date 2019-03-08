@@ -2,14 +2,15 @@
 
 //Imports
 import React, { Component } from "react";
-//Import Navigation bar
-import AppNavbar from "../layout/AppNavbar";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
-export default class ChangePassword extends Component {
+class ChangePassword extends Component {
   render() {
+    const { auth } = this.props;
+    if (!auth.uid) return <Redirect to="/auth/login" />;
     return (
       <div>
-        <AppNavbar />
         <div className="container">
           <div className="text-center">
             <h2>Change Password</h2>
@@ -35,3 +36,12 @@ export default class ChangePassword extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  // console.log(state);
+  return {
+    auth: state.firebase.auth
+  };
+};
+
+export default connect(mapStateToProps)(ChangePassword);
