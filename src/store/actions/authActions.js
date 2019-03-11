@@ -56,13 +56,13 @@ export const register = newUser => {
   };
 };
 
-export const deleteU = currentUser => {
+export const deleteU = () => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
 
     firebase
       .auth()
-      .delete(currentUser)
+      .currentUser.delete()
       .then(() => {
         dispatch({ type: "DELETE_SUCCESS" });
       })

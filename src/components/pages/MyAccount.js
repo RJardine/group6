@@ -41,7 +41,7 @@ class MyAccount extends Component {
           <br />
           <button
             className="btn btn-primary btn-lg"
-            onSubmit={this.handleSubmit}
+            onClick={this.handleSubmit}
           >
             Deactivate Account
           </button>
@@ -75,12 +75,20 @@ class MyAccount extends Component {
   }
 }
 
-const mapStateToProps = (state, dispatch) => {
+const mapStateToProps = state => {
   return {
     auth: state.firebase.auth,
-    profile: state.firebase.profile,
+    profile: state.firebase.profile
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
     deleteU: currentUser => dispatch(deleteU(currentUser))
   };
 };
 
-export default connect(mapStateToProps)(MyAccount);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MyAccount);
