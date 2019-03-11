@@ -9,6 +9,7 @@ class Register extends Component {
     firstName: "",
     lastName: "",
     email: "",
+    phone: "",
     password: ""
   };
   handleChange = e => {
@@ -26,12 +27,11 @@ class Register extends Component {
     return (
       <div>
         <div className="container">
-          <button type="button" className="btn btn-link offset-md-6">
+          {/* <button type="button" className="btn btn-link offset-md-6"> 
             <Link to="/auth/login">Click Here To Login</Link>
-          </button>
-          <br />
+    </button>*/}
           <div className="col-md-4 offset-md-4">
-            <h1 className="text-left">Register </h1>
+            <h3 className="text-left">Register </h3>
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <label htmlFor="firstName">First Name</label>
@@ -68,6 +68,16 @@ class Register extends Component {
                 <input
                   type="password"
                   id="password"
+                  onChange={this.handleChange}
+                  className="form-control"
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="phone">Phone Number</label>
+                <input
+                  type="text"
+                  id="phone"
                   onChange={this.handleChange}
                   className="form-control"
                   required

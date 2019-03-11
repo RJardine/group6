@@ -5,7 +5,7 @@ class Home extends Component {
     return (
       <div>
         <div className="container">
-          <h1>Home Page</h1>
+          <h1>Welcome</h1>
           <section className="top-container">
             <header className="showcase">
               <h1>Knock Knock</h1>
@@ -14,24 +14,24 @@ class Home extends Component {
                 eaque non iure sed voluptas eveniet obcaecati quis, praesentium
                 doloribus eum.
               </p>
-              <a href="#" className="btn btn-primary">
+              <a href="/faq" className="btn btn-primary">
                 Read More
               </a>
             </header>
-            {/* <!-- Upfront  --> */}
+            {/* <!-- book now  --> */}
             <div className="top-box top-box-a">
-              <h4>Upfront</h4>
-              <p className="price">£30/2hr</p>
-              <a href="#" class="btn btn-primary">
-                Search Now
+              {/* <h4>Request Service</h4> */}
+              <p className="price">Request Service</p>
+              <a href="/bookpage" className="btn btn-primary">
+                Book Now
               </a>
             </div>
-            {/* <!-- full price  --> */}
+            {/* <!-- Upfront  --> */}
             <div className="top-box top-box-b">
-              <h4>Full Price</h4>
-              <p className="price">£60/2hr</p>
-              <a href="#" className="btn btn-primary">
-                Search Now
+              <h4>Upfront Fee - 30%</h4>
+              {/* <p className="price">30%</p> */}
+              <a href="/faq" class="btn btn-primary">
+                Why do I have to pay upfront?
               </a>
             </div>
             <br />
@@ -63,6 +63,9 @@ class Home extends Component {
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
                 mollitia?
+                <br />
+                <br />
+                <a href="/contact_us">Contact us</a>
               </p>
             </div>
             {/* <!-- Customer Satisfactory box--> */}

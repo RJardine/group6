@@ -42,6 +42,8 @@ export const register = newUser => {
           .set({
             firstName: newUser.firstName,
             lastName: newUser.lastName,
+            email: newUser.email,
+            phone: newUser.phone,
             initials: newUser.firstName[0] + newUser.lastName[0]
           });
       })

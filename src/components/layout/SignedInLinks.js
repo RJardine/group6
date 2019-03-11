@@ -13,8 +13,18 @@ const SignedInLinks = props => {
           </NavLink>
         </li>
         <li className="nav-item">
+          <NavLink to="/my_account" className="nav-link">
+            My Account
+          </NavLink>
+        </li>
+        <li className="nav-item">
           <NavLink to="/faq" className="nav-link">
             FAQ
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink to="/receipts" className="nav-link">
+            Receipts
           </NavLink>
         </li>
         <li className="nav-item">

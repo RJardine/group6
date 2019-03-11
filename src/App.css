@@ -19,11 +19,11 @@ body {
   /* color: var(--dark); */
 
   background: #ccc;
-  /* background-image: url("./components/pages/images/back.jpeg");
-  -webkit-background-size: cover;
+  background-image: url("./components/layout/images/back.jpeg");
+  /*-webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; */
+  background-size: cover;*/
   /* font-family: "Ubuntu", sans-serif; */
 }
 
@@ -82,7 +82,7 @@ img {
 .showcase {
   grid-area: showcase;
   min-height: 400px;
-  background: url(./components/pages/images/pexels-photo-848205.jpeg);
+  background: url(./components/layout/images/pexels-photo-848205.jpeg);
   background-size: cover;
   background-position: center;
   padding: 3rem;
@@ -176,4 +176,39 @@ img {
       "top-box-a"
       "top-box-b";
   }
+}
+
+.cstmCI {
+  max-width: 360px;
+}
+
+.cstmCI2 {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 25px;
+  border-style: solid;
+  border-width: medium; /* sets border width on all sides */
+  border-color: rgb(39, 39, 39);
+}
+
+.contactus1 {
+  max-width: 500px;
+  height: 70px;
+}
+
+.myaccount1 {
+  max-width: 500px;
+  height: 5px;
+}
+
+.mybooks {
+  padding: 1px;
+  border-style: solid;
+  border-width: medium; /* sets border width on all sides */
+  border-color: rgb(39, 39, 39);
+}
+
+.icon {
+  vertical-align: middle;
+  margin-left: 130px;
 }
