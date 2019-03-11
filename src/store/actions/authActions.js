@@ -55,3 +55,19 @@ export const register = newUser => {
       });
   };
 };
+
+export const deleteU = currentUser => {
+  return (dispatch, getState, { getFirebase }) => {
+    const firebase = getFirebase();
+
+    firebase
+      .auth()
+      .delete(currentUser)
+      .then(() => {
+        dispatch({ type: "DELETE_SUCCESS" });
+      })
+      .catch(err => {
+        dispatch({ type: "DELETE_ERROR", err });
+      });
+  };
+};

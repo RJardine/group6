@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import { deleteU } from "../../store/actions/authActions";
 
 class MyAccount extends Component {
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.deleteU(this.dispatch);
+  };
   render() {
     const { auth, profile } = this.props;
     if (!auth.uid) return <Redirect to="/auth/login" />;
@@ -34,7 +39,12 @@ class MyAccount extends Component {
           </div>
           <br />
           <br />
-          <button className="btn btn-primary btn-lg">Deactivate Account</button>
+          <button
+            className="btn btn-primary btn-lg"
+            onSubmit={this.handleSubmit}
+          >
+            Deactivate Account
+          </button>
         </div>
         <div>
           <div className="container col-md-3 offset-md-8 ">
@@ -65,11 +75,11 @@ class MyAccount extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  // console.log(state);
+const mapStateToProps = (state, dispatch) => {
   return {
     auth: state.firebase.auth,
-    profile: state.firebase.profile
+    profile: state.firebase.profile,
+    deleteU: currentUser => dispatch(deleteU(currentUser))
   };
 };
 
