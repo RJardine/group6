@@ -19,7 +19,7 @@ class MyAccount extends Component {
           </h2>
           <br />
           <div className="form-group">
-            <label>Name:</label>
+            <label className="">Name:</label>
             <label>{profile.firstName + " " + profile.lastName}</label>
           </div>
           <div className="form-group">
