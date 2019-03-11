@@ -38,17 +38,20 @@ const authReducer = (state = initState, action) => {
 
     case "DELETE_SUCCESS":
       console.log("delete success");
-      return {
-        ...state,
-        authError: null
-      };
+      return state;
 
     case "DELETE_ERROR":
       console.log("delete error");
-      return {
-        ...state,
-        authError: action.err.message
-      };
+      return state;
+
+    case "UPDATE_SUCCESS":
+      console.log("update success");
+      return state;
+
+    case "UPDATE_ERROR":
+      console.log("update error");
+      return state;
+
     default:
       return state;
   }

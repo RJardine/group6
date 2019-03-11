@@ -57,8 +57,15 @@ export const register = newUser => {
 };
 
 export const deleteU = () => {
-  return (dispatch, getState, { getFirebase }) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
+    const firestore = getFirestore();
+    const user = firebase.auth().currentUser.uid;
+
+    firestore
+      .collection("users")
+      .doc(user)
+      .delete();
 
     firebase
       .auth()
@@ -68,6 +75,32 @@ export const deleteU = () => {
       })
       .catch(err => {
         dispatch({ type: "DELETE_ERROR", err });
+      });
+  };
+};
+
+export const updateDetails = () => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firebase = getFirebase();
+    const firestore = getFirestore();
+    const user = firebase.auth().currentUser.uid;
+
+    firestore
+      .collection("users")
+      .doc(user)
+      .set({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        phone: user.phone,
+        initials: user.firstName + user.lastName
+      })
+
+      .then(() => {
+        dispatch({ type: "UPDATE_SUCCESS" });
+      })
+      .catch(err => {
+        dispatch({ type: "UPDATE_ERROR", err });
       });
   };
 };

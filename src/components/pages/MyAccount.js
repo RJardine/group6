@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { deleteU } from "../../store/actions/authActions";
+import { deleteU, updateDetails } from "../../store/actions/authActions";
 
 class MyAccount extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.deleteU(this.dispatch);
   };
+
+  handleModalSubmit = x => {
+    this.props.updateDetails(this.dispatch);
+  };
+
   render() {
     const { auth, profile } = this.props;
     if (!auth.uid) return <Redirect to="/auth/login" />;
@@ -20,24 +25,103 @@ class MyAccount extends Component {
           <br />
           <div className="form-group">
             <label className="">Name:</label>
-            <label>{profile.firstName + " " + profile.lastName}</label>
+            <label className="form-control">
+              {profile.firstName + " " + profile.lastName}
+            </label>
           </div>
           <div className="form-group">
             <label>Email:</label>
-            <label>{profile.email}</label>
+            <label className="form-control">{profile.email}</label>
           </div>
           <div className="form-group">
             <label>Phone No:</label>
-            <label>{profile.phone}</label>
+            <label className="form-control">{profile.phone}</label>
           </div>
-          <button className="btn btn-secondary btn-sm ">Edit Details</button>
+          <button
+            className="btn btn-secondary btn-sm "
+            data-toggle="modal"
+            data-target="#exampleModal"
+          >
+            Edit Details
+          </button>
+          {/* <!-- Modal --> */}
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Edit Details
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <label>First Name:</label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    defaultValue={profile.firstName}
+                  />
+                  <br />
+                  <label>Last Name:</label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    defaultValue={profile.lastName}
+                  />
+                  <br />
+                  <label>Email:</label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    defaultValue={profile.email}
+                  />
+                  <br />
+                  <label>Phone No:</label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    defaultValue={profile.phone}
+                  />
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    onClick={this.handleModalSubmit}
+                  >
+                    Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="form-group">
             <br />
             <a href="/change_password" className="btn btn-secondary btn-md ">
               Change Password
             </a>
           </div>
-          <br />
           <br />
           <button
             className="btn btn-primary btn-lg"
@@ -84,7 +168,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteU: currentUser => dispatch(deleteU(currentUser))
+    deleteU: currentUser => dispatch(deleteU(currentUser)),
+    updateDetails: currentUser => dispatch(updateDetails(currentUser))
   };
 };
 
