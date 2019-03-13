@@ -10,6 +10,7 @@ class MyAccount extends Component {
   };
 
   handleModalSubmit = x => {
+    x.preventDefault();
     this.props.updateDetails(this.dispatch);
   };
 
@@ -40,14 +41,14 @@ class MyAccount extends Component {
           <button
             className="btn btn-secondary btn-sm "
             data-toggle="modal"
-            data-target="#exampleModal"
+            data-target="#editDetails-modal"
           >
             Edit Details
           </button>
           {/* <!-- Modal --> */}
           <div
             class="modal fade"
-            id="exampleModal"
+            id="editDetails-modal"
             tabindex="-1"
             role="dialog"
             aria-labelledby="exampleModalLabel"
@@ -59,6 +60,7 @@ class MyAccount extends Component {
                   <h5 class="modal-title" id="exampleModalLabel">
                     Edit Details
                   </h5>
+
                   <button
                     type="button"
                     class="close"
@@ -68,51 +70,57 @@ class MyAccount extends Component {
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
-                  <label>First Name:</label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    defaultValue={profile.firstName}
-                  />
-                  <br />
-                  <label>Last Name:</label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    defaultValue={profile.lastName}
-                  />
-                  <br />
-                  <label>Email:</label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    defaultValue={profile.email}
-                  />
-                  <br />
-                  <label>Phone No:</label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    defaultValue={profile.phone}
-                  />
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    onClick={this.handleModalSubmit}
-                  >
-                    Save changes
-                  </button>
-                </div>
+                <form id="editDetails-form">
+                  <div class="modal-body">
+                    <label>First Name:</label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      id="firstName-modal"
+                      defaultValue={profile.firstName}
+                    />
+                    <br />
+                    <label>Last Name:</label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      id="lastName-modal"
+                      defaultValue={profile.lastName}
+                    />
+                    <br />
+                    <label>Email:</label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      id="email-modal"
+                      defaultValue={profile.email}
+                    />
+                    <br />
+                    <label>Phone No:</label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      id="phone-modal"
+                      defaultValue={profile.phone}
+                    />
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      onClick={this.handleModalSubmit}
+                    >
+                      Save changes
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>

@@ -84,20 +84,25 @@ export const updateDetails = () => {
     const firebase = getFirebase();
     const firestore = getFirestore();
     const user = firebase.auth().currentUser.uid;
+    const editModal = document.querySelector("#editDetails-form");
 
     firestore
       .collection("users")
       .doc(user)
-      .set({
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        phone: user.phone,
-        initials: user.firstName + user.lastName
+      .update({
+        firstName: editModal["firstName-modal"].value,
+        lastName: editModal["lastName-modal"].value,
+        email: editModal["email-modal"].value,
+        phone: editModal["phone-modal"].value
+        /*initials:
+          editModal["firstName-modal"][0].value +
+          editModal["lastName-modal"][0].value*/
       })
-
       .then(() => {
         dispatch({ type: "UPDATE_SUCCESS" });
+
+        /*const editModal = document.querySelector("#editDetails-modal");
+        editModal.modal("hide");*/
       })
       .catch(err => {
         dispatch({ type: "UPDATE_ERROR", err });
