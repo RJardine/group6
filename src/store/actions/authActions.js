@@ -100,9 +100,6 @@ export const updateDetails = () => {
       })
       .then(() => {
         dispatch({ type: "UPDATE_SUCCESS" });
-
-        /*const editModal = document.querySelector("#editDetails-modal");
-        editModal.modal("hide");*/
       })
       .catch(err => {
         dispatch({ type: "UPDATE_ERROR", err });

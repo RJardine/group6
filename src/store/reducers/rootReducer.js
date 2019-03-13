@@ -2,9 +2,11 @@ import authReducer from "./authReducer";
 import { combineReducers } from "redux";
 import { firestoreReducer } from "redux-firestore";
 import { firebaseReducer } from "react-redux-firebase";
+import bookingReducer from "./bookingReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  bookings: bookingReducer,
   firestore: firestoreReducer,
   firebase: firebaseReducer
 });

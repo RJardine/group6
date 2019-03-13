@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { deleteU, updateDetails } from "../../store/actions/authActions";
+import { viewBookings } from "../../store/actions/bookActions";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 
 class MyAccount extends Component {
   handleSubmit = e => {
@@ -14,8 +17,16 @@ class MyAccount extends Component {
     this.props.updateDetails(this.dispatch);
   };
 
+  handleViewBookingsSubmit = y => {
+    y.preventDefault();
+    this.props.viewBookings(this.dispatch);
+  };
+
   render() {
-    const { auth, profile } = this.props;
+    const { auth, profile, bookings } = this.props;
+
+    //const bk = console.log(bookings);
+
     if (!auth.uid) return <Redirect to="/auth/login" />;
     return (
       <div>
@@ -25,7 +36,7 @@ class MyAccount extends Component {
           </h2>
           <br />
           <div className="form-group">
-            <label className="">Name:</label>
+            <label>Name:</label>
             <label className="form-control">
               {profile.firstName + " " + profile.lastName}
             </label>
@@ -77,6 +88,7 @@ class MyAccount extends Component {
                       className="form-control"
                       type="text"
                       id="firstName-modal"
+                      required
                       defaultValue={profile.firstName}
                     />
                     <br />
@@ -85,6 +97,7 @@ class MyAccount extends Component {
                       className="form-control"
                       type="text"
                       id="lastName-modal"
+                      required
                       defaultValue={profile.lastName}
                     />
                     <br />
@@ -93,6 +106,7 @@ class MyAccount extends Component {
                       className="form-control"
                       type="text"
                       id="email-modal"
+                      required
                       defaultValue={profile.email}
                     />
                     <br />
@@ -101,6 +115,7 @@ class MyAccount extends Component {
                       className="form-control"
                       type="text"
                       id="phone-modal"
+                      required
                       defaultValue={profile.phone}
                     />
                   </div>
@@ -115,6 +130,7 @@ class MyAccount extends Component {
                     <button
                       type="button"
                       class="btn btn-primary"
+                      data-dismiss="modal"
                       onClick={this.handleModalSubmit}
                     >
                       Save changes
@@ -141,11 +157,23 @@ class MyAccount extends Component {
         <div>
           <div className="container col-md-3 offset-md-8 ">
             <label>View Bookings:</label>
-            <button className="btn btn-secondary btn-sm">View</button>
+            <button
+              className="btn btn-secondary btn-sm"
+              onClick={this.handleViewBookingsSubmit}
+            >
+              View
+            </button>
             <br />
             <br />
             <div className="mybooks">
-              <textarea className="form-control" rows="12" />
+              <textarea
+                id="Bookings-textArea"
+                className="form-control"
+                rows="12"
+                readOnly
+              >
+                {profile.email}
+              </textarea>
             </div>
             <br />
             <br />
@@ -170,18 +198,23 @@ class MyAccount extends Component {
 const mapStateToProps = state => {
   return {
     auth: state.firebase.auth,
-    profile: state.firebase.profile
+    profile: state.firebase.profile,
+    bookings: state.firestore.ordered
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     deleteU: currentUser => dispatch(deleteU(currentUser)),
-    updateDetails: currentUser => dispatch(updateDetails(currentUser))
+    updateDetails: currentUser => dispatch(updateDetails(currentUser)),
+    viewBookings: currentUser => dispatch(viewBookings(currentUser))
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
+  firestoreConnect([{ collection: "bookings" }])
 )(MyAccount);
