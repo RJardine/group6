@@ -26,7 +26,7 @@ export const viewBookings = () => {
             "Location: " +
             doc.data().location;
         } else {
-          //// doc.data() will be undefined in this case
+          // doc.data() will be undefined in this case
           console.log("No such document!");
         }
         dispatch({ type: "VIEW_SUCCESS" });
