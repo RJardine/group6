@@ -14,6 +14,7 @@ import MyAccount from "./components/pages/MyAccount";
 import Payment from "./components/pages/Payment";
 import Feedback from "./components/pages/Feedback";
 import AppNavbar from "./components/layout/AppNavbar";
+import BookingDetails from "./components/bookings/BookingDetails";
 
 class App extends Component {
   render() {
@@ -34,6 +35,7 @@ class App extends Component {
             <Route path="/my_account" component={MyAccount} />
             <Route path="/payment" component={Payment} />
             <Route path="/feedback" component={Feedback} />
+            <Route path="/booking/:id" component={BookingDetails} />
           </Switch>
           <div className="container" />
         </div>

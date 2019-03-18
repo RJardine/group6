@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { deleteU, updateDetails } from "../../store/actions/authActions";
+import BookingList from "../bookings/BookingList";
 import { viewBookings } from "../../store/actions/bookActions";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
@@ -17,13 +18,19 @@ class MyAccount extends Component {
     this.props.updateDetails(this.dispatch);
   };
 
-  handleViewBookingsSubmit = y => {
-    y.preventDefault();
-    this.props.viewBookings(this.dispatch);
-  };
+  // handleViewBookingsSubmit = y => {
+  //   y.preventDefault();
+  //   this.props.viewBookings(this.dispatch);
+  // };
+
+  // handleBookingSubmit = e => {
+  //   e.preventDefault();
+  //   // console.log(this.state);
+  //   this.props.viewBookings(this.dispatch);
+  // };
 
   render() {
-    const { auth, profile, bookings } = this.props;
+    const { auth, profile, bookings, doc } = this.props;
 
     //const bk = console.log(bookings);
 
@@ -49,13 +56,16 @@ class MyAccount extends Component {
             <label>Phone No:</label>
             <label className="form-control">{profile.phone}</label>
           </div>
-          <button
-            className="btn btn-secondary btn-sm "
-            data-toggle="modal"
-            data-target="#editDetails-modal"
-          >
-            Edit Details
-          </button>
+          <div>
+            <button
+              className="btn btn-secondary btn-sm"
+              data-toggle="modal"
+              data-target="#editDetails-modal"
+            >
+              Edit Details
+            </button>
+          </div>
+
           {/* <!-- Modal --> */}
           <div
             class="modal fade"
@@ -107,6 +117,7 @@ class MyAccount extends Component {
                       type="text"
                       id="email-modal"
                       required
+                      readOnly
                       defaultValue={profile.email}
                     />
                     <br />
@@ -146,6 +157,12 @@ class MyAccount extends Component {
             <a href="/change_password" className="btn btn-secondary btn-md ">
               Change Password
             </a>
+            <a
+              href="/change_password"
+              className="btn btn-secondary btn-md offset-md-1 "
+            >
+              Change Email
+            </a>
           </div>
           <br />
           <button
@@ -157,26 +174,30 @@ class MyAccount extends Component {
         </div>
         <div>
           <div className="container col-md-3 offset-md-8 ">
-            <label>View Bookings:</label>
-            <button
+            <h5>My Bookings:</h5>
+            {/* <button
               className="btn btn-secondary btn-sm"
-              onClick={this.handleViewBookingsSubmit}
+              //onClick={this.handleBookingSubmit}
             >
               View
-            </button>
-            <br />
-            <br />
-            <div className="mybooks">
+            </button> */}
+            <div className="mybooks" id="Bookings-textArea">
+              <div className="row">
+                <div className="col s12 m6">
+                  <BookingList bookings={bookings} />
+                </div>
+              </div>
+            </div>
+
+            {/* <div className="mybooks">
               <textarea
                 id="Bookings-textArea"
                 className="form-control"
                 rows="12"
                 readOnly
-              >
-                {profile.email}
-              </textarea>
-            </div>
-            <br />
+              />
+              <ul id="booking-list" />
+            </div> */}
             <br />
             <div>
               <a href="/feedback" className="btn btn-primary btn-sm">
@@ -189,6 +210,7 @@ class MyAccount extends Component {
                 />
               </a>
             </div>
+            <br />
           </div>
         </div>
       </div>
@@ -200,15 +222,15 @@ const mapStateToProps = state => {
   return {
     auth: state.firebase.auth,
     profile: state.firebase.profile,
-    bookings: state.firestore.ordered
+    bookings: state.firestore.ordered.bookings
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     deleteU: currentUser => dispatch(deleteU(currentUser)),
-    updateDetails: currentUser => dispatch(updateDetails(currentUser)),
-    viewBookings: currentUser => dispatch(viewBookings(currentUser))
+    updateDetails: currentUser => dispatch(updateDetails(currentUser))
+    //viewBookings: booking => dispatch(viewBookings(booking))
   };
 };
 
@@ -217,5 +239,7 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   ),
-  firestoreConnect([{ collection: "bookings" }])
+  firestoreConnect(props => [
+    { collection: "bookings", where: [["authorId", "==", props.auth.uid]] }
+  ])
 )(MyAccount);

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { createBooking } from "../../store/actions/bookActions";
 import { Redirect } from "react-router-dom";
 
-class BookPage extends Component {
+class CreateBooking extends Component {
   state = {
     title: "",
     content: ""
@@ -62,4 +62,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(BookPage);
+)(CreateBooking);

@@ -9,7 +9,7 @@ const SignedInLinks = props => {
       <ul className="navbar-nav auto">
         <li className="nav-item">
           <NavLink to="/bookpage" className="nav-link">
-            Book
+            Book Service
           </NavLink>
         </li>
         <li className="nav-item">
