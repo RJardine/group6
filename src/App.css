@@ -212,3 +212,13 @@ img {
   vertical-align: middle;
   margin-left: 130px;
 }
+
+.card-columns {
+  column-count: 3;
+}
+
+.card-img-top {
+  height: 15rem;
+  object-fit: cover;
+  /* opacity: 1; */
+}

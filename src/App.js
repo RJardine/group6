@@ -6,6 +6,7 @@ import Register from "./components/auth/Register";
 import ForgotPassword from "./components/auth/ForgotPassword";
 import ChangePassword from "./components/auth/ChangePassword";
 import Home from "./components/pages/Home";
+import BookService from "./components/pages/BookService";
 import BookPage from "./components/pages/BookPage";
 import Faq from "./components/pages/Faq";
 import ContactUs from "./components/pages/ContactUs";
@@ -33,8 +34,8 @@ class App extends Component {
             <Route path="/contact_us" component={ContactUs} />
             <Route path="/receipts" component={Receipts} />
             <Route path="/my_account" component={MyAccount} />
-            <Route path="/payment" component={Payment} />
-            <Route path="/feedback" component={Feedback} />
+            {/* <Route path="/payment" component={Payment} /> */}
+            {/* <Route path="/feedback" component={Feedback} /> */}
             <Route path="/booking/:id" component={BookingDetails} />
           </Switch>
           <div className="container" />

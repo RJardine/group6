@@ -2,11 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createBooking } from "../../store/actions/bookActions";
 import { Redirect } from "react-router-dom";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 
 class BookPage extends Component {
   state = {
     title: "",
-    content: ""
+    content: "",
+    fName: "",
+    lName: "",
+    email: "",
+    phone: "",
+    street: "",
+    city: "",
+    zip: ""
   };
   handleChange = e => {
     this.setState({
@@ -15,12 +24,12 @@ class BookPage extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
-    // console.log(this.state);
     this.props.createBooking(this.state);
     this.props.history.push("/");
   };
   render() {
-    const { auth } = this.props;
+    const { auth, profile } = this.props;
+    console.log(profile.email);
     if (!auth.uid) return <Redirect to="/auth/login" />;
     return (
       <div className="container">
@@ -39,6 +48,34 @@ class BookPage extends Component {
             <label htmlFor="content">Booking Content</label>
           </div>
           <div className="input-field">
+            <input type="text" id="fName" onChange={this.handleChange} />
+            <label htmlFor="title">First Name</label>
+          </div>
+          <div className="input-field">
+            <input type="text" id="lName" onChange={this.handleChange} />
+            <label htmlFor="title">Last Name</label>
+          </div>
+          <div className="input-field">
+            <input type="text" id="email" onChange={this.handleChange} />
+            <label htmlFor="title">Email</label>
+          </div>
+          <div className="input-field">
+            <input type="text" id="phone" onChange={this.handleChange} />
+            <label htmlFor="title">Phone Number</label>
+          </div>
+          <div className="input-field">
+            <input type="text" id="street" onChange={this.handleChange} />
+            <label htmlFor="title">Street</label>
+          </div>
+          <div className="input-field">
+            <input type="text" id="city" onChange={this.handleChange} />
+            <label htmlFor="title">City</label>
+          </div>
+          <div className="input-field">
+            <input type="text" id="zip" onChange={this.handleChange} />
+            <label htmlFor="title">ZIP code</label>
+          </div>
+          <div className="input-field">
             <button className="btn pink lighten-1">Create</button>
           </div>
         </form>
@@ -49,7 +86,9 @@ class BookPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    profile: state.firebase.profile,
+    bookings: state.firestore.ordered.bookings
   };
 };
 
@@ -59,7 +98,12 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
+  firestoreConnect(props => [
+    { collection: "bookings", where: [["authorId", "==", props.auth.uid]] }
+  ])
 )(BookPage);

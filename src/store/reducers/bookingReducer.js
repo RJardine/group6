@@ -14,6 +14,12 @@ const bookingReducer = (state = initState, action) => {
     case "VIEW_BOOKING_ERROR":
       console.log("view booking error");
       return state;
+    case "VIEW_SERVICES_SUCCESS":
+      console.log("view service success");
+      return state;
+    case "VIEW_SERVICES_ERROR":
+      console.log("view service error");
+      return state;
     default:
       return state;
   }

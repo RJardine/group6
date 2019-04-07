@@ -3,14 +3,15 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { deleteU, updateDetails } from "../../store/actions/authActions";
 import BookingList from "../bookings/BookingList";
-import { viewBookings } from "../../store/actions/bookActions";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 
 class MyAccount extends Component {
-  handleSubmit = e => {
+  handleDeleteSubmit = e => {
     e.preventDefault();
     this.props.deleteU(this.dispatch);
+    this.props.history.push("/");
+    window.location.reload();
   };
 
   handleModalSubmit = x => {
@@ -18,21 +19,8 @@ class MyAccount extends Component {
     this.props.updateDetails(this.dispatch);
   };
 
-  // handleViewBookingsSubmit = y => {
-  //   y.preventDefault();
-  //   this.props.viewBookings(this.dispatch);
-  // };
-
-  // handleBookingSubmit = e => {
-  //   e.preventDefault();
-  //   // console.log(this.state);
-  //   this.props.viewBookings(this.dispatch);
-  // };
-
   render() {
-    const { auth, profile, bookings, doc } = this.props;
-
-    //const bk = console.log(bookings);
+    const { auth, profile, bookings } = this.props;
 
     if (!auth.uid) return <Redirect to="/auth/login" />;
     return (
@@ -66,7 +54,7 @@ class MyAccount extends Component {
             </button>
           </div>
 
-          {/* <!-- Modal --> */}
+          {/* <!-- Details Modal --> */}
           <div
             class="modal fade"
             id="editDetails-modal"
@@ -167,20 +155,61 @@ class MyAccount extends Component {
           <br />
           <button
             className="btn btn-primary btn-lg"
-            onClick={this.handleSubmit}
+            data-toggle="modal"
+            data-target="#deleteAccount-modal"
           >
             Deactivate Account
           </button>
+          <div
+            class="modal fade"
+            id="deleteAccount-modal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="deleteAccountLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Warning!</h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    You are about to delete your account. Are you sure you want
+                    to proceed?
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    No
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    onClick={this.handleDeleteSubmit}
+                  >
+                    Yes, Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div>
           <div className="container col-md-3 offset-md-8 ">
             <h5>My Bookings:</h5>
-            {/* <button
-              className="btn btn-secondary btn-sm"
-              //onClick={this.handleBookingSubmit}
-            >
-              View
-            </button> */}
             <div className="mybooks" id="Bookings-textArea">
               <div className="row">
                 <div className="col s12 m6">
@@ -188,16 +217,6 @@ class MyAccount extends Component {
                 </div>
               </div>
             </div>
-
-            {/* <div className="mybooks">
-              <textarea
-                id="Bookings-textArea"
-                className="form-control"
-                rows="12"
-                readOnly
-              />
-              <ul id="booking-list" />
-            </div> */}
             <br />
             <div>
               <a href="/feedback" className="btn btn-primary btn-sm">
@@ -230,7 +249,6 @@ const mapDispatchToProps = dispatch => {
   return {
     deleteU: currentUser => dispatch(deleteU(currentUser)),
     updateDetails: currentUser => dispatch(updateDetails(currentUser))
-    //viewBookings: booking => dispatch(viewBookings(booking))
   };
 };
 
