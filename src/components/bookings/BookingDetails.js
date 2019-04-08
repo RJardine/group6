@@ -13,12 +13,12 @@ const BookingDetails = props => {
       <div className="container section booking-details">
         <div className="card z-depth-0">
           <div className="card-content">
-            <span className="card-title">{booking.title}</span>
-            <p>{booking.content}</p>
+            <span className="card-title">{booking.jobType}</span>
+            <p>{booking.jobDescription}</p>
           </div>
           <div className="card-action grey lighten-4 grey-text">
             <div>
-              Posted by {booking.authorFirstName} {booking.authorLastName}
+              Receipt to {booking.authorFirstName} {booking.authorLastName}
             </div>
             <div>{moment(booking.createdAt.toDate()).calendar()}</div>
           </div>

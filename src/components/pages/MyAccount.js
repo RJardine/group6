@@ -56,23 +56,23 @@ class MyAccount extends Component {
 
           {/* <!-- Details Modal --> */}
           <div
-            class="modal fade"
+            className="modal fade"
             id="editDetails-modal"
-            tabindex="-1"
+            tabIndex="-1"
             role="dialog"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="exampleModalLabel">
                     Edit Details
                   </h5>
 
                   <button
                     type="button"
-                    class="close"
+                    className="close"
                     data-dismiss="modal"
                     aria-label="Close"
                   >
@@ -80,7 +80,7 @@ class MyAccount extends Component {
                   </button>
                 </div>
                 <form id="editDetails-form">
-                  <div class="modal-body">
+                  <div className="modal-body">
                     <label>First Name:</label>
                     <input
                       className="form-control"
@@ -118,17 +118,17 @@ class MyAccount extends Component {
                       defaultValue={profile.phone}
                     />
                   </div>
-                  <div class="modal-footer">
+                  <div className="modal-footer">
                     <button
                       type="button"
-                      class="btn btn-secondary"
+                      className="btn btn-secondary"
                       data-dismiss="modal"
                     >
                       Close
                     </button>
                     <button
                       type="button"
-                      class="btn btn-primary"
+                      className="btn btn-primary"
                       data-dismiss="modal"
                       onClick={this.handleModalSubmit}
                       data-dismiss="modal"
@@ -161,43 +161,43 @@ class MyAccount extends Component {
             Deactivate Account
           </button>
           <div
-            class="modal fade"
+            className="modal fade"
             id="deleteAccount-modal"
-            tabindex="-1"
+            tabIndex="-1"
             role="dialog"
             aria-labelledby="deleteAccountLabel"
             aria-hidden="true"
           >
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Warning!</h5>
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">Warning!</h5>
                   <button
                     type="button"
-                    class="close"
+                    className="close"
                     data-dismiss="modal"
                     aria-label="Close"
                   >
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
+                <div className="modal-body">
                   <p>
                     You are about to delete your account. Are you sure you want
                     to proceed?
                   </p>
                 </div>
-                <div class="modal-footer">
+                <div className="modal-footer">
                   <button
                     type="button"
-                    class="btn btn-secondary"
+                    className="btn btn-secondary"
                     data-dismiss="modal"
                   >
                     No
                   </button>
                   <button
                     type="button"
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                     onClick={this.handleDeleteSubmit}
                   >
                     Yes, Delete
@@ -219,7 +219,7 @@ class MyAccount extends Component {
             </div>
             <br />
             <div>
-              <a href="/feedback" className="btn btn-primary btn-sm">
+              <a href="/contact_us" className="btn btn-primary btn-sm">
                 Give Feedback
               </a>
               <a href="/faq">

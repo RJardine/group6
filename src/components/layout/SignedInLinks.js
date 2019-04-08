@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { logout } from "../../store/actions/authActions";
 
 const SignedInLinks = props => {
+  const { profile } = props;
   return (
     <div>
       <ul className="navbar-nav auto">
@@ -14,17 +15,12 @@ const SignedInLinks = props => {
         </li>
         <li className="nav-item">
           <NavLink to="/my_account" className="nav-link">
-            My Account
+            {profile.email}
           </NavLink>
         </li>
         <li className="nav-item">
           <NavLink to="/faq" className="nav-link">
             FAQ
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink to="/receipts" className="nav-link">
-            Receipts
           </NavLink>
         </li>
         <li className="nav-item">
@@ -37,6 +33,13 @@ const SignedInLinks = props => {
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(logout())
@@ -44,6 +47,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(SignedInLinks);

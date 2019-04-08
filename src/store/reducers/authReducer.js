@@ -37,7 +37,7 @@ const authReducer = (state = initState, action) => {
       };
 
     case "DELETE_SUCCESS":
-      console.log("delete success");
+      console.log("delete success" + state);
       return state;
 
     case "DELETE_ERROR":

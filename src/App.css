@@ -19,7 +19,7 @@ body {
   /* color: var(--dark); */
 
   background: #ccc;
-  background-image: url("./components/layout/images/back.jpeg");
+  /* background-image: url("./components/layout/images/back.jpeg"); */
   /*-webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -210,7 +210,7 @@ img {
 
 .icon {
   vertical-align: middle;
-  margin-left: 130px;
+  margin-left: 70px;
 }
 
 .card-columns {

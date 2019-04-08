@@ -1,75 +1,102 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
-import { connect } from "react-redux";
 
-class Faq extends Component {
+export class Faq extends Component {
+  state = {
+    showContactInfo: false
+  };
+
+  // onclick event
+  onShowClick = () => {
+    this.setState({ showContactInfo: !this.state.showContactInfo });
+  };
+
   render() {
-    const { auth } = this.props;
-    if (!auth.uid) return <Redirect to="/auth/login" />;
     return (
       <div>
-        <div className="top-container text-center">
-          <h1>
-            <b> Frequently Asked Questions</b>
-          </h1>
+        <h2 className="">Frequently Asked Questions</h2>
+        <br />
+        {/* side 2 */}
+        <div className="card">
+          <div className="card-body">
+            <div className="card-title">
+              What Cities do you Cover?
+              <i
+                onClick={this.onShowClick}
+                className="fas fa-sort-down"
+                style={{ cursor: "pointer" }}
+              />
+            </div>
+            <div className="container">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
+              doloribus aliquam sunt consequatur! Distinctio veritatis at
+              suscipit assumenda, totam doloribus modi nam, fuga dicta molestias
+              quia porro, voluptatibus aut. Facere?
+            </div>
+          </div>
         </div>
-        <div className="container">
-          <h2>Do you Accept Tea/Coffee/Drinks?</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vitae
-            consequuntur laudantium incidunt! Dolor laudantium iusto aliquid
-            nihil corporis repellendus provident consequatur enim ea nam? Magnam
-            nesciunt libero quaerat? Ab saepe consequuntur totam similique
-            nesciunt nulla obcaecati provident sequi cupiditate. Consequuntur,
-            vel ipsam molestiae aspernatur quaerat odio ex id fugit totam, ullam
-            accusantium iusto soluta corrupti numquam autem debitis est itaque
-            ea. Repellendus illum cum tempore rerum molestiae libero voluptates
-            odit sapiente maxime similique a doloremque eius, quas velit
-            corporis nesciunt sequi animi dolore ducimus officia placeat quis?
-            At temporibus officia sunt possimus facere voluptatem beatae
-            asperiores aliquid est odio?
-          </p>
-          <h2>How Long Does It Take to Complete A Job?</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vitae
-            consequuntur laudantium incidunt! Dolor laudantium iusto aliquid
-            nihil corporis repellendus provident consequatur enim ea nam? Magnam
-            nesciunt libero quaerat? Ab saepe consequuntur totam similique
-            nesciunt nulla obcaecati provident sequi cupiditate. Consequuntur,
-            vel ipsam molestiae aspernatur quaerat odio ex id fugit totam, ullam
-            accusantium iusto soluta corrupti numquam autem debitis est itaque
-            ea. Repellendus illum cum tempore rerum molestiae libero voluptates
-            odit sapiente maxime similique a doloremque eius, quas velit
-            corporis nesciunt sequi animi dolore ducimus officia placeat quis?
-            At temporibus officia sunt possimus facere voluptatem beatae
-            asperiores aliquid est odio?
-          </p>
-          <h2>How Do I Contact You?</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vitae
-            consequuntur laudantium incidunt! Dolor laudantium iusto aliquid
-            nihil corporis repellendus provident consequatur enim ea nam? Magnam
-            nesciunt libero quaerat? Ab saepe consequuntur totam similique
-            nesciunt nulla obcaecati provident sequi cupiditate. Consequuntur,
-            vel ipsam molestiae aspernatur quaerat odio ex id fugit totam, ullam
-            accusantium iusto soluta corrupti numquam autem debitis est itaque
-            ea. Repellendus illum cum tempore rerum molestiae libero voluptates
-            odit sapiente maxime similique a doloremque eius, quas velit
-            corporis nesciunt sequi animi dolore ducimus officia placeat quis?
-            At temporibus officia sunt possimus facere voluptatem beatae
-            asperiores aliquid est odio?
-          </p>
+        <br />
+        {/* side 2 */}
+        <div className="card">
+          <div className="card-body">
+            <div className="card-title">
+              Payment method?
+              <i
+                onClick={this.onShowClick}
+                className="fas fa-sort-down"
+                style={{ cursor: "pointer" }}
+              />
+            </div>
+            <div className="container">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
+              doloribus aliquam sunt consequatur! Distinctio veritatis at
+              suscipit assumenda, totam doloribus modi nam, fuga dicta molestias
+              quia porro, voluptatibus aut. Facere?
+            </div>
+          </div>
+        </div>
+        <br />
+        {/* side 2 */}
+        <div className="card">
+          <div className="card-body">
+            <div className="card-title">
+              How long does the repair take?
+              <i
+                onClick={this.onShowClick}
+                className="fas fa-sort-down"
+                style={{ cursor: "pointer" }}
+              />
+            </div>
+            <div className="container">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
+              doloribus aliquam sunt consequatur! Distinctio veritatis at
+              suscipit assumenda, totam doloribus modi nam, fuga dicta molestias
+              quia porro, voluptatibus aut. Facere?
+            </div>
+          </div>
+        </div>
+        <br />
+        {/* side 2 */}
+        <div className="card">
+          <div className="card-body">
+            <div className="card-title">
+              Do you Accept Food?
+              <i
+                onClick={this.onShowClick}
+                className="fas fa-sort-down"
+                style={{ cursor: "pointer" }}
+              />
+            </div>
+            <div className="container">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
+              doloribus aliquam sunt consequatur! Distinctio veritatis at
+              suscipit assumenda, totam doloribus modi nam, fuga dicta molestias
+              quia porro, voluptatibus aut. Facere?
+            </div>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  // console.log(state);
-  return {
-    auth: state.firebase.auth
-  };
-};
-
-export default connect(mapStateToProps)(Faq);
+export default Faq;

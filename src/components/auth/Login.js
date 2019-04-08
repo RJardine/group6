@@ -53,10 +53,6 @@ class Login extends Component {
                   required
                 />
               </div>
-              <div className="form-group form-check">
-                <input type="checkbox" className="form-check-input" />
-                <label htmlFor="checkbox">Remember Me</label>
-              </div>
               <button className="btn btn-primary btn-lg btn-block">
                 Login
               </button>

@@ -3,12 +3,12 @@ import "firebase/firestore";
 import "firebase/auth";
 
 var config = {
-  apiKey: "AIzaSyC-2djS6iteoGXmfSWqroyGgct3fE1lZZ4",
-  authDomain: "group6-3175f.firebaseapp.com",
-  databaseURL: "https://group6-3175f.firebaseio.com",
-  projectId: "group6-3175f",
-  storageBucket: "group6-3175f.appspot.com",
-  messagingSenderId: "819202564054"
+  apiKey: "AIzaSyD0wbwhRQtGBNAThsN3QdBHP4Fiui9UL_M",
+  authDomain: "react-firebase-42bc2.firebaseapp.com",
+  databaseURL: "https://react-firebase-42bc2.firebaseio.com",
+  projectId: "react-firebase-42bc2",
+  storageBucket: "react-firebase-42bc2.appspot.com",
+  messagingSenderId: "437369143235"
 };
 firebase.initializeApp(config);
 

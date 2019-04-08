@@ -5,9 +5,9 @@ const BookingSummary = ({ booking }) => {
   return (
     <div className="card z-depth-0 booking-summary">
       <div className="card-content grey-text text-darken-3">
-        <span className="card-title ">{booking.title}</span>
+        <span className="card-title ">{booking.jobType}</span>
         <p>
-          Posted by {booking.authorFirstName} {booking.authorLastName}
+          Receipt to {booking.authorFirstName} {booking.authorLastName}
         </p>
         <p className="grey-text">
           {moment(booking.createdAt.toDate()).calendar()}

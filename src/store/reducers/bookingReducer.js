@@ -8,6 +8,12 @@ const bookingReducer = (state = initState, action) => {
     case "CREATE_BOOKING_ERROR":
       console.log("create booking error");
       return state;
+    case "ADD_SUCCESS":
+      console.log("add jobs success");
+      return state;
+    case "ADD_ERROR":
+      console.log("add jobs error");
+      return state;
     case "VIEW_BOOKING_SUCCESS":
       console.log("view booking success");
       return state;

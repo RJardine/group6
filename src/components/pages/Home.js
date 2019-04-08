@@ -18,7 +18,7 @@ class Home extends Component {
                 eaque non iure sed voluptas eveniet obcaecati quis, praesentium
                 doloribus eum.
               </p>
-              <a href="/faq" className="btn btn-primary">
+              <a href="/about_us" className="btn btn-primary">
                 Read More
               </a>
             </header>
@@ -34,7 +34,7 @@ class Home extends Component {
             <div className="top-box top-box-b">
               <h4>Upfront Fee - 30%</h4>
               {/* <p className="price">30%</p> */}
-              <a href="/faq" class="btn btn-primary">
+              <a href="/faq" className="btn btn-primary">
                 Why do I have to pay upfront?
               </a>
             </div>
