@@ -10,12 +10,12 @@ import Book from "./components/pages/Book";
 import Search from "./components/pages/Search";
 import Faq from "./components/pages/Faq";
 import ContactUs from "./components/pages/ContactUs";
-import MyAccount from "./components/pages/MyAccount";
 import AppNavbar from "./components/layout/AppNavbar";
 import BookingDetails from "./components/bookings/BookingDetails";
 import SearchDetails from "./components/pages/SearchDetails";
 import About from "./components/pages/About";
 import NotFound from "./components/pages/NotFound";
+import MyDetails from "./components/pages/MyDetails";
 
 class App extends Component {
   render() {
@@ -36,7 +36,7 @@ class App extends Component {
               <Route path="/faq" component={Faq} />
               <Route path="/about_us" component={About} />
               <Route path="/contact_us" component={ContactUs} />
-              <Route path="/my_account" component={MyAccount} />
+              <Route path="/my_account" component={MyDetails} />
               <Route path="/booking/:id" component={BookingDetails} />
               <Route component={NotFound} />
             </Switch>

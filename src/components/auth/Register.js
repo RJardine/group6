@@ -26,69 +26,74 @@ class Register extends Component {
     return (
       <div>
         <div className="container">
-          {/* <button type="button" className="btn btn-link offset-md-6"> 
-            <Link to="/auth/login">Click Here To Login</Link>
-    </button>*/}
-          <div className="col-md-4 offset-md-4">
-            <h3 className="text-left">Register </h3>
-            <form onSubmit={this.handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="firstName">First Name</label>
-                <input
-                  type="text"
-                  id="firstName"
-                  onChange={this.handleChange}
-                  className="form-control"
-                  required
-                />
+          <div className="col-md-6 mx-auto">
+            <div className="card">
+              <div className="card-body">
+                <h1 className="text-center pb-4 pt-3">
+                  <span className="text-secondary">
+                    <i className="fas fa-unlock" /> Register
+                  </span>
+                </h1>
+                <form onSubmit={this.handleSubmit}>
+                  <div className="form-group">
+                    <label htmlFor="firstName">First Name</label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      onChange={this.handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="lastName">Last Name</label>
+                    <input
+                      type="text"
+                      id="lastName"
+                      onChange={this.handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      onChange={this.handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input
+                      type="password"
+                      id="password"
+                      onChange={this.handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="phone">Phone Number</label>
+                    <input
+                      type="text"
+                      id="phone"
+                      onChange={this.handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <button className="btn btn-primary btn-lg btn-block">
+                    Register
+                  </button>
+                  <div className="center red-text">
+                    {authError ? <p>{authError}</p> : null}
+                  </div>
+                </form>
               </div>
-              <div className="form-group">
-                <label htmlFor="lastName">Last Name</label>
-                <input
-                  type="text"
-                  id="lastName"
-                  onChange={this.handleChange}
-                  className="form-control"
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  onChange={this.handleChange}
-                  className="form-control"
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  onChange={this.handleChange}
-                  className="form-control"
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="phone">Phone Number</label>
-                <input
-                  type="text"
-                  id="phone"
-                  onChange={this.handleChange}
-                  className="form-control"
-                  required
-                />
-              </div>
-              <button className="btn btn-primary btn-lg btn-block">
-                Register
-              </button>
-              <div className="center red-text">
-                {authError ? <p>{authError}</p> : null}
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>

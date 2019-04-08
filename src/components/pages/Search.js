@@ -19,7 +19,7 @@ class Search extends Component {
               <div className="col-md-6">
                 <h2>
                   {" "}
-                  <i className="fas fa-tools" /> Services{" "}
+                  <i className="fas fa-tools" /> Luton Services{" "}
                 </h2>
               </div>
             </div>
@@ -28,8 +28,8 @@ class Search extends Component {
             <div className="row">
               <div className="col-sm-auto">
                 <div
-                  className="card-columns "
-                  style={{ columnCount: "3", marginLeft: "70px" }}
+                  className="card-columns"
+                  //style={{ columnCount: "", marginLeft: "70px" }}
                 >
                   {jobType.map(job => (
                     <div

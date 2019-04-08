@@ -178,6 +178,30 @@ img {
   }
 }
 
+@media (min-width: 576px) {
+  .card-columns {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-columns {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-columns {
+    column-count: 4;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-columns {
+    column-count: 5;
+  }
+}
+
 .cstmCI {
   max-width: 360px;
 }
@@ -208,10 +232,10 @@ img {
   border-color: rgb(39, 39, 39);
 }
 
-.icon {
+/* .icon {
   vertical-align: middle;
   margin-left: 70px;
-}
+} */
 
 .card-columns {
   column-count: 3;

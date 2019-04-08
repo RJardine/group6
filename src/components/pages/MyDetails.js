@@ -6,7 +6,7 @@ import BookingList from "../bookings/BookingList";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 
-class MyAccount extends Component {
+class MyDetails extends Component {
   handleDeleteSubmit = e => {
     e.preventDefault();
     this.props.deleteU(this.dispatch);
@@ -25,35 +25,49 @@ class MyAccount extends Component {
     if (!auth.uid) return <Redirect to="/auth/login" />;
     return (
       <div>
-        <div className="container offset-md-1 col-md-4 myaccount1">
-          <h2 className=" text-left">
-            <b>My Details</b>
-          </h2>
-          <br />
-          <div className="form-group">
-            <label>Name:</label>
-            <label className="form-control">
-              {profile.firstName + " " + profile.lastName}
-            </label>
-          </div>
-          <div className="form-group">
-            <label>Email:</label>
-            <label className="form-control">{profile.email}</label>
-          </div>
-          <div className="form-group">
-            <label>Phone No:</label>
-            <label className="form-control">{profile.phone}</label>
-          </div>
-          <div>
-            <button
-              className="btn btn-secondary btn-sm"
-              data-toggle="modal"
-              data-target="#editDetails-modal"
-            >
-              Edit Details
-            </button>
-          </div>
+        <div className="row">
+          {/* My Details section */}
+          <div className="col-sm">
+            <div className="card">
+              <div className="card-body">
+                <h4 className="text-center">My Details</h4>
+                {/* Name */}
+                <div className="form-group">
+                  <label>Name:</label>
+                  <label className="form-control">
+                    {profile.firstName + " " + profile.lastName}
+                  </label>
+                </div>
+                {/* Email */}
+                <div className="form-group">
+                  <label>Email:</label>
+                  <label className="form-control">{profile.email}</label>
+                </div>
+                {/* Phone Number */}
+                <div className="form-group">
+                  <label>Phone No:</label>
+                  <label className="form-control">{profile.phone}</label>
+                </div>
+                {/* Edit Button */}
+                <button
+                  className="btn btn-secondary btn-block"
+                  data-toggle="modal"
+                  data-target="#editDetails-modal"
+                >
+                  Edit Details
+                </button>
 
+                {/* Delete Button */}
+                <button
+                  className="btn btn-primary btn-block"
+                  data-toggle="modal"
+                  data-target="#deleteAccount-modal"
+                >
+                  Deactivate Account
+                </button>
+              </div>
+            </div>
+          </div>
           {/* <!-- Details Modal --> */}
           <div
             className="modal fade"
@@ -139,26 +153,7 @@ class MyAccount extends Component {
               </div>
             </div>
           </div>
-          <div className="form-group">
-            <br />
-            <a href="/change_password" className="btn btn-secondary btn-md ">
-              Change Password
-            </a>
-            <a
-              href="/change_password"
-              className="btn btn-secondary btn-md offset-md-1 "
-            >
-              Change Email
-            </a>
-          </div>
-          <br />
-          <button
-            className="btn btn-primary btn-lg"
-            data-toggle="modal"
-            data-target="#deleteAccount-modal"
-          >
-            Deactivate Account
-          </button>
+          {/* Delete Modal */}
           <div
             className="modal fade"
             id="deleteAccount-modal"
@@ -205,30 +200,29 @@ class MyAccount extends Component {
               </div>
             </div>
           </div>
-        </div>
-        <div>
-          <div className="container col-md-3 offset-md-8 ">
-            <h5>My Bookings:</h5>
-            <div className="mybooks" id="Bookings-textArea">
-              <div className="row">
-                <div className="col s12 m6">
-                  <BookingList bookings={bookings} />
-                </div>
+          {/* My Receipts section */}
+          <div className="col-sm">
+            <div className="card">
+              <div className="card-body">
+                <h4 className="card-title">
+                  Receipts <i className="fas fa-receipt" />
+                </h4>
+                <BookingList bookings={bookings} />
               </div>
             </div>
-            <br />
-            <div>
-              <a href="/contact_us" className="btn btn-primary btn-sm">
-                Give Feedback
-              </a>
-              <a href="/faq">
-                <i
-                  className="far fa-question-circle icon"
-                  style={{ fontSize: "40px" }}
-                />
-              </a>
-            </div>
-            <br />
+            <hr />
+            <a href="/faq">
+              <i
+                className="far fa-question-circle icon float-right"
+                style={{ fontSize: "40px", marginLeft: "40px" }}
+              />
+            </a>
+            <a
+              href="/contact_us"
+              className="btn btn-primary btn-sm float-right"
+            >
+              Give Feedback
+            </a>
           </div>
         </div>
       </div>
@@ -259,4 +253,4 @@ export default compose(
   firestoreConnect(props => [
     { collection: "bookings", where: [["authorId", "==", props.auth.uid]] }
   ])
-)(MyAccount);
+)(MyDetails);
