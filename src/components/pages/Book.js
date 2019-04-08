@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
-import PropTypes from "prop-types";
-import { createBooking, addJobs } from "../../store/actions/bookActions";
+import { createBooking } from "../../store/actions/bookActions";
 
 class Book extends Component {
   state = {

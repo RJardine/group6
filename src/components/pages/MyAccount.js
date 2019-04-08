@@ -131,7 +131,6 @@ class MyAccount extends Component {
                       className="btn btn-primary"
                       data-dismiss="modal"
                       onClick={this.handleModalSubmit}
-                      data-dismiss="modal"
                     >
                       Save changes
                     </button>
