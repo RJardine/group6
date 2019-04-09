@@ -112,7 +112,7 @@ export class ContactUs extends Component {
           <div className="col-12 copyright mt-3">
             <p className="text-right text-muted">
               created with <i className="fa fa-heart" /> by{" "}
-              <a href="https://t-php.fr/43-theme-ecommerce-bootstrap-4.html">
+              <a href="/">
                 <i>knock knock</i>
               </a>{" "}
               | <span>v. 1.0</span>

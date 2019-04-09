@@ -28,7 +28,7 @@ class Home extends Component {
             </div>
             {/* <!-- Upfront  --> */}
             <div className="top-box top-box-b">
-              <h4>Upfront Fee - 30%</h4>
+              <h4>Upfront Payment</h4>
               {/* <p className="price">30%</p> */}
               <a href="/faq" className="btn btn-primary">
                 Why do I have to pay upfront?

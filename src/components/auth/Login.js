@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../store/actions/authActions";
-import { Redirect } from "react-router-dom";
 
 class Login extends Component {
   state = {
@@ -20,8 +18,8 @@ class Login extends Component {
   };
 
   render() {
-    const { authError, auth } = this.props;
-    if (auth.uid) return <Redirect to="/" />;
+    const { authError } = this.props;
+    // if (auth.uid) return <Redirect to="/" />;
     return (
       <div>
         <div className="container">

@@ -9,6 +9,7 @@ class SearchDetails extends Component {
   render() {
     //   deco
     const { job } = this.props;
+
     if (job) {
       return (
         <div>
@@ -73,7 +74,7 @@ class SearchDetails extends Component {
         </div>
       );
     } else {
-      return <div className="container">Loading...</div>;
+      return <h1>Loading...</h1>;
     }
   }
 }
@@ -87,7 +88,7 @@ export default compose(
   firestoreConnect(props => [
     { collection: "jobType", storeAs: "job", doc: props.match.params.id }
   ]),
-  connect(({ firestore: { ordered } }, props) => ({
+  connect(({ firestore: { ordered } }, props, state) => ({
     job: ordered.job && ordered.job[0]
   }))
 )(SearchDetails);

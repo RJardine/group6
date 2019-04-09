@@ -3,8 +3,6 @@ import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import ForgotPassword from "./components/auth/ForgotPassword";
-import ChangePassword from "./components/auth/ChangePassword";
 import Home from "./components/pages/Home";
 import Book from "./components/pages/Book";
 import Search from "./components/pages/Search";
@@ -16,6 +14,7 @@ import SearchDetails from "./components/pages/SearchDetails";
 import About from "./components/pages/About";
 import NotFound from "./components/pages/NotFound";
 import MyDetails from "./components/pages/MyDetails";
+import { UserIsAuthenticated, UserIsNotAuthenticated } from "./config/auth";
 
 class App extends Component {
   render() {
@@ -26,19 +25,35 @@ class App extends Component {
           <div className="container">
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/auth/login" component={Login} />
-              <Route path="/auth/register" component={Register} />
-              <Route path="/forgot_password" component={ForgotPassword} />
-              <Route path="/change_password" component={ChangePassword} />
-              <Route path="/bookpage" component={Search} />
-              <Route path="/job/:id" component={SearchDetails} />
-              <Route path="/:id/book" component={Book} />
+              <Route
+                path="/auth/login"
+                component={UserIsNotAuthenticated(Login)}
+              />
+              <Route
+                path="/auth/register"
+                component={UserIsNotAuthenticated(Register)}
+              />
+              <Route path="/bookpage" component={UserIsAuthenticated(Search)} />
+              <Route
+                path="/job/:id"
+                component={UserIsAuthenticated(SearchDetails)}
+              />
+              <Route path="/:id/book" component={UserIsAuthenticated(Book)} />
               <Route path="/faq" component={Faq} />
               <Route path="/about_us" component={About} />
-              <Route path="/contact_us" component={ContactUs} />
-              <Route path="/my_account" component={MyDetails} />
-              <Route path="/booking/:id" component={BookingDetails} />
-              <Route component={NotFound} />
+              <Route
+                path="/contact_us"
+                component={UserIsAuthenticated(ContactUs)}
+              />
+              <Route
+                path="/my_account"
+                component={UserIsAuthenticated(MyDetails)}
+              />
+              <Route
+                path="/booking/:id"
+                component={UserIsAuthenticated(BookingDetails)}
+              />
+              <Route component={UserIsAuthenticated(NotFound)} />
             </Switch>
           </div>
         </div>

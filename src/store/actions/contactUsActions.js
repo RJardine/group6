@@ -1,13 +1,13 @@
 export const submitMessage = contactus => {
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
-    const profile = getState().firebase.profile;
+    // const profile = getState().firebase.profile;
 
     firestore
       .collection("contactus")
       .add({
         ...contactus,
-        authorFirstName: profile.firstName,
+        // authorFirstName: profile.name,
         createdAt: new Date()
       })
       .then(() => {

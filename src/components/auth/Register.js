@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { register } from "../../store/actions/authActions";
 
@@ -21,8 +20,8 @@ class Register extends Component {
     this.props.register(this.state);
   };
   render() {
-    const { auth, authError } = this.props;
-    if (auth.uid) return <Redirect to="/" />;
+    const { authError } = this.props;
+    // if (auth.uid) return <Redirect to="/" />;
     return (
       <div>
         <div className="container">

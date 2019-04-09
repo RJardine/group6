@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { deleteU, updateDetails } from "../../store/actions/authActions";
 import BookingList from "../bookings/BookingList";
@@ -10,7 +9,7 @@ class MyDetails extends Component {
   handleDeleteSubmit = e => {
     e.preventDefault();
     this.props.deleteU(this.dispatch);
-    this.props.history.push("/");
+    this.props.history.push("/auth/login");
     window.location.reload();
   };
 
@@ -20,9 +19,8 @@ class MyDetails extends Component {
   };
 
   render() {
-    const { auth, profile, bookings } = this.props;
+    const { profile, bookings } = this.props;
 
-    if (!auth.uid) return <Redirect to="/auth/login" />;
     return (
       <div>
         <div className="row">

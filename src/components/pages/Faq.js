@@ -18,14 +18,7 @@ export class Faq extends Component {
         {/* side 2 */}
         <div className="card">
           <div className="card-body">
-            <div className="card-title">
-              What Cities do you Cover?
-              <i
-                onClick={this.onShowClick}
-                className="fas fa-sort-down"
-                style={{ cursor: "pointer" }}
-              />
-            </div>
+            <div className="card-title">What Cities do you Cover?</div>
             <div className="container">
               For the moment, only Luton (UK), hopefully in the future we will
               be able to spread out to more cities or countries.
@@ -36,14 +29,7 @@ export class Faq extends Component {
         {/* side 2 */}
         <div className="card">
           <div className="card-body">
-            <div className="card-title">
-              Why do I have to pay beforehand?
-              <i
-                onClick={this.onShowClick}
-                className="fas fa-sort-down"
-                style={{ cursor: "pointer" }}
-              />
-            </div>
+            <div className="card-title">Why do I have to pay beforehand?</div>
             <div className="container">
               We require you to pay beforehand to make sure that someone is at
               home to open the door for our professionals. It's unfortunate when
@@ -56,14 +42,7 @@ export class Faq extends Component {
         {/* side 2 */}
         <div className="card">
           <div className="card-body">
-            <div className="card-title">
-              How long does the repair take?
-              <i
-                onClick={this.onShowClick}
-                className="fas fa-sort-down"
-                style={{ cursor: "pointer" }}
-              />
-            </div>
+            <div className="card-title">How long does the repair take?</div>
             <div className="container">
               The repair time depends on what needs repairing. Average repair
               time is indicated in each service description.
@@ -74,14 +53,7 @@ export class Faq extends Component {
         {/* side 2 */}
         <div className="card">
           <div className="card-body">
-            <div className="card-title">
-              Do you Accept Food?
-              <i
-                onClick={this.onShowClick}
-                className="fas fa-sort-down"
-                style={{ cursor: "pointer" }}
-              />
-            </div>
+            <div className="card-title">Do you Accept Food?</div>
             <div className="container">
               We only hire repairers that are disciplined and have nothing but
               respect towards our customers, so normally all repairers will

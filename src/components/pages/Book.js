@@ -52,6 +52,7 @@ class Book extends Component {
   render() {
     //destruct props
     const { job } = this.props;
+
     return (
       <div>
         <form onSubmit={this.onSubmit}>
@@ -126,7 +127,7 @@ class Book extends Component {
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="address">Address</label>
+                <label htmlFor="address">House number</label>
                 <input
                   type="text"
                   name="address"
@@ -190,7 +191,7 @@ class Book extends Component {
                     name="cardNumber"
                     className="form-control"
                     // onChange={this.onChange}
-                    maxLength="12"
+                    maxLength="16"
                     required
                   />
                 </div>

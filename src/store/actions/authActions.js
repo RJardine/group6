@@ -62,14 +62,13 @@ export const deleteU = () => {
     const firestore = getFirestore();
     const user = firebase.auth().currentUser.uid;
 
+    firebase.auth().currentUser.delete();
+
     firestore
       .collection("users")
       .doc(user)
-      .delete();
+      .delete()
 
-    firebase
-      .auth()
-      .currentUser.delete()
       .then(() => {
         dispatch({ type: "DELETE_SUCCESS" });
       })
