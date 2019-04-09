@@ -10,9 +10,9 @@ class Home extends Component {
             <header className="showcase">
               <h1>Knock Knock</h1>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
-                eaque non iure sed voluptas eveniet obcaecati quis, praesentium
-                doloribus eum.
+                We supply a wide range of services directly to your home. We
+                take care of everything for you from plumbing to engineering.
+                Book now and leave the rest to us!
               </p>
               <a href="/about_us" className="btn btn-primary">
                 Read More
@@ -43,8 +43,8 @@ class Home extends Component {
               <i className="far fa-4x fa-clock" />
               <h3>Quick Time</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                mollitia?
+                We pride ourselves in our ability to always be on time and get
+                quickly to your home.
               </p>
             </div>
             {/* <!-- tools box --> */}
@@ -52,8 +52,8 @@ class Home extends Component {
               <i className="fas fa-tools fa-4x" />
               <h3>Best Tools</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                mollitia?
+                Our repairers are equiped with high end tools to ensure all your
+                repairs go smoothly.
               </p>
             </div>
             {/* <!-- contact us box--> */}
@@ -61,8 +61,8 @@ class Home extends Component {
               <i className="fas fa-headset fa-4x" />
               <h3>Contact Us</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                mollitia?
+                Have a question? Maybe you would like to give us some feedback.
+                Don't hesitate to contact us.
                 <br />
                 <br />
                 <a href="/contact_us">Contact us</a>
@@ -71,23 +71,18 @@ class Home extends Component {
             {/* <!-- Customer Satisfactory box--> */}
             <div className="box">
               <i className="fas fa-smile-beam fa-4x" />
-              <h3>Customer Satisfactory</h3>
+              <h3>Customer Satisfaction</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                mollitia?
+                Customers are the most important part of our business, so we try
+                to follow high standards regarding their satisfaction
               </p>
             </div>
           </section>
           <br />
           {/* <!-- footer --> */}
           <footer>
-            <p>KNOCK KNOCK &copy; 2019</p>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error
-              vero eligendi laboriosam repellendus nemo dignissimos id, in eius
-              quos quia minima cum officiis voluptate, praesentium accusantium.
-              Eos libero ea sed?
-            </p>
+            <hr />
+            <p>KNOCK KNOCK SERVICES &copy; 2019</p>
           </footer>
         </div>
       </div>

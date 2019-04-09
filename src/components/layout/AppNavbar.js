@@ -20,7 +20,7 @@ const Navbar = props => {
             width="30"
             height="30"
           />{" "}
-          Knock Knock
+          Knock Knock Services
         </Link>
         {links}
       </div>

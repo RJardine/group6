@@ -8,8 +8,8 @@ export const createBooking = booking => {
       .collection("bookings")
       .add({
         ...booking,
-        authorFirstName: profile.firstName,
-        authorLastName: profile.lastName,
+        authorFirstName: profile.name,
+        authorLastName: profile.surname,
         authorId: authorId,
         createdAt: new Date()
       })

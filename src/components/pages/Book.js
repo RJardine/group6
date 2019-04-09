@@ -60,7 +60,7 @@ class Book extends Component {
             <div className="col-md-4 order-md-2 mb-4">
               <hr />
               <h4 className="d-flex justify-content-between align-items-center mb-3">
-                <span className="text-muted">Your Cart</span>
+                <span className="text-muted">Service Selected</span>
                 <span className="badge badge-secondary badge-pill">1</span>
               </h4>
               <ul className="list-group mb-3" id="addJobs">
@@ -218,10 +218,14 @@ class Book extends Component {
                   />
                 </div>
               </div>
-              <hr />
             </div>
           </div>
         </form>
+        {/* <!-- footer --> */}
+        <footer>
+          <hr />
+          <p>KNOCK KNOCK SERVICES &copy; 2019</p>
+        </footer>
       </div>
     );
   }

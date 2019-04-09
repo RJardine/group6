@@ -35,7 +35,7 @@ class MyDetails extends Component {
                 <div className="form-group">
                   <label>Name:</label>
                   <label className="form-control">
-                    {profile.firstName + " " + profile.lastName}
+                    {profile.name + " " + profile.surname}
                   </label>
                 </div>
                 {/* Email */}
@@ -101,7 +101,7 @@ class MyDetails extends Component {
                       type="text"
                       id="firstName-modal"
                       required
-                      defaultValue={profile.firstName}
+                      defaultValue={profile.name}
                     />
                     <br />
                     <label>Last Name:</label>
@@ -110,7 +110,7 @@ class MyDetails extends Component {
                       type="text"
                       id="lastName-modal"
                       required
-                      defaultValue={profile.lastName}
+                      defaultValue={profile.surname}
                     />
                     <br />
                     <label>Email:</label>
@@ -202,7 +202,7 @@ class MyDetails extends Component {
           </div>
           {/* My Receipts section */}
           <div className="col-sm">
-            <div className="card">
+            <div className="card" id="navbar2">
               <div className="card-body">
                 <h4 className="card-title">
                   Receipts <i className="fas fa-receipt" />
@@ -225,6 +225,11 @@ class MyDetails extends Component {
             </a>
           </div>
         </div>
+        {/* <!-- footer --> */}
+        <footer>
+          <hr />
+          <p>KNOCK KNOCK SERVICES &copy; 2019</p>
+        </footer>
       </div>
     );
   }

@@ -10,8 +10,8 @@ const BookingDetails = props => {
   if (!auth.uid) return <Redirect to="/auth/login" />;
   if (booking) {
     return (
-      <div className="container section booking-details">
-        <div className="card z-depth-0">
+      <div className="container section booking-details ">
+        <div className="card z-depth-0 ">
           <div className="card-content">
             <span className="card-title">{booking.jobType}</span>
             <p>{booking.jobDescription}</p>

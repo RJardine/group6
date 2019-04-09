@@ -15,7 +15,7 @@ class SearchDetails extends Component {
           <div className="row">
             {/*  */}
             <div className="col-md-6">
-              <Link to="/dashboard" className="btn btn-link">
+              <Link to="/bookpage" className="btn btn-link">
                 <i className="fas fa-arrow-circle-left" /> Back to Jobs
               </Link>
             </div>
@@ -60,11 +60,16 @@ class SearchDetails extends Component {
                 </li>
                 <li className="list-group-item">
                   {" "}
-                  <b>Time =></b> {job.time}
+                  <b>Average Time =></b> {job.time}
                 </li>
               </ul>
             </div>
           </div>
+          {/* <!-- footer --> */}
+          <footer>
+            <hr />
+            <p>KNOCK KNOCK SERVICES &copy; 2019</p>
+          </footer>
         </div>
       );
     } else {

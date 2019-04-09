@@ -65,6 +65,16 @@ class Login extends Component {
             </div>
           </div>
         </div>
+        {/* <!-- footer --> */}
+        <footer>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <hr />
+          <p>KNOCK KNOCK SERVICES &copy; 2019</p>
+        </footer>
       </div>
     );
   }

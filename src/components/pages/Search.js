@@ -38,6 +38,7 @@ class Search extends Component {
                       key={job.id}
                     >
                       <img
+                        className="card-img-top"
                         id="brand-image"
                         src={job.image}
                         alt="Home"
@@ -45,14 +46,11 @@ class Search extends Component {
                       />{" "}
                       <div className="card-header">{job.type}</div>
                       <div className="card-body">
-                        <h5 className="card-title">{job.location}</h5>
-                        <p className="card-text">
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </p>
+                        {/* <h5 className="card-title">{job.location}</h5>
+                        <p className="card-text">{job.description}</p> */}
                         <Link
                           to={`/job/${job.id}`}
-                          className="btn btn-secondary btn-sm"
+                          className="btn btn-secondary btn-block"
                         >
                           <i className="fas fa-arrow-circle-right" /> Details
                         </Link>
@@ -60,9 +58,13 @@ class Search extends Component {
                     </div>
                   ))}
                 </div>
-                <hr />
               </div>
             </div>
+            {/* <!-- footer --> */}
+            <footer>
+              <hr />
+              <p>KNOCK KNOCK SERVICES &copy; 2019</p>
+            </footer>
           </div>
         </div>
       );

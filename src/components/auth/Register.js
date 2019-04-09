@@ -96,6 +96,11 @@ class Register extends Component {
             </div>
           </div>
         </div>
+        {/* <!-- footer --> */}
+        <footer>
+          <hr />
+          <p>KNOCK KNOCK SERVICES &copy; 2019</p>
+        </footer>
       </div>
     );
   }

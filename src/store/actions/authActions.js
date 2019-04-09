@@ -40,8 +40,8 @@ export const register = newUser => {
           .collection("users")
           .doc(resp.user.uid)
           .set({
-            firstName: newUser.firstName,
-            lastName: newUser.lastName,
+            name: newUser.firstName,
+            surname: newUser.lastName,
             email: newUser.email,
             phone: newUser.phone,
             initials: newUser.firstName[0] + newUser.lastName[0]
@@ -90,8 +90,8 @@ export const updateDetails = () => {
       .collection("users")
       .doc(user)
       .update({
-        firstName: editModal["firstName-modal"].value,
-        lastName: editModal["lastName-modal"].value,
+        name: editModal["firstName-modal"].value,
+        surname: editModal["lastName-modal"].value,
         email: editModal["email-modal"].value,
         phone: editModal["phone-modal"].value
         /*initials:

@@ -27,10 +27,8 @@ export class Faq extends Component {
               />
             </div>
             <div className="container">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
-              doloribus aliquam sunt consequatur! Distinctio veritatis at
-              suscipit assumenda, totam doloribus modi nam, fuga dicta molestias
-              quia porro, voluptatibus aut. Facere?
+              For the moment, only Luton (UK), hopefully in the future we will
+              be able to spread out to more cities or countries.
             </div>
           </div>
         </div>
@@ -39,7 +37,7 @@ export class Faq extends Component {
         <div className="card">
           <div className="card-body">
             <div className="card-title">
-              Payment method?
+              Why do I have to pay beforehand?
               <i
                 onClick={this.onShowClick}
                 className="fas fa-sort-down"
@@ -47,10 +45,10 @@ export class Faq extends Component {
               />
             </div>
             <div className="container">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
-              doloribus aliquam sunt consequatur! Distinctio veritatis at
-              suscipit assumenda, totam doloribus modi nam, fuga dicta molestias
-              quia porro, voluptatibus aut. Facere?
+              We require you to pay beforehand to make sure that someone is at
+              home to open the door for our professionals. It's unfortunate when
+              our professionals travel all the way to your home just to find
+              that no one is home to let him work.
             </div>
           </div>
         </div>
@@ -67,10 +65,8 @@ export class Faq extends Component {
               />
             </div>
             <div className="container">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
-              doloribus aliquam sunt consequatur! Distinctio veritatis at
-              suscipit assumenda, totam doloribus modi nam, fuga dicta molestias
-              quia porro, voluptatibus aut. Facere?
+              The repair time depends on what needs repairing. Average repair
+              time is indicated in each service description.
             </div>
           </div>
         </div>
@@ -87,13 +83,18 @@ export class Faq extends Component {
               />
             </div>
             <div className="container">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
-              doloribus aliquam sunt consequatur! Distinctio veritatis at
-              suscipit assumenda, totam doloribus modi nam, fuga dicta molestias
-              quia porro, voluptatibus aut. Facere?
+              We only hire repairers that are disciplined and have nothing but
+              respect towards our customers, so normally all repairers will
+              decline any food or drink offered to them out of respect and
+              security as well.
             </div>
           </div>
         </div>
+        {/* <!-- footer --> */}
+        <footer>
+          <hr />
+          <p>KNOCK KNOCK SERVICES &copy; 2019</p>
+        </footer>
       </div>
     );
   }
